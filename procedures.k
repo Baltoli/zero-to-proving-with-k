@@ -18,7 +18,7 @@ module PROCEDURES-SYNTAX
 
     syntax IExp ::= Id | Int
                   | "(" IExp ")" [bracket]
-                  | Id "(" IExps ")"
+                  | Id "(" IExps ")" [strict(2)]
                   | IExp "+" IExp [strict]
                   | IExp "-" IExp [strict]
                   > IExp "*" IExp [strict]
