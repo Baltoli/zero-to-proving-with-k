@@ -56,7 +56,7 @@ module CONTROL-FLOW
     rule <k> I1 / I2 => I1 /Int I2 ...</k>
     rule <k> I1 ^ I2 => I1 ^Int I2 ...</k>
 
-    rule  <k> I:Id => {M[I]}:>Int ...</k>
+    rule  <k> I:Id => M[I] ...</k>
           <mem> M </mem>
 
     rule <k> I1 <= I2 => I1  <=Int I2 ...</k>
@@ -69,8 +69,8 @@ module CONTROL-FLOW
     rule <k> B1 && B2 => B1 andBool B2 ...</k>
     rule <k> B1 || B2 => B1  orBool B2 ...</k>
 
-    rule  <k> ID = IEXP ; => . ...</k>
-          <mem> MEM => MEM [ ID <- IEXP ] </mem>
+    rule  <k> ID = I:Int ; => . ...</k>
+          <mem> MEM => MEM [ ID <- I:Int ] </mem>
 
     rule  <k> S1:Stmt S2:Stmt => S1 ~> S2 ...</k>
 
