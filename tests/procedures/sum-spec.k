@@ -10,6 +10,7 @@ endmodule
 module VERIFICATION
     imports SUM-SPEC-SYNTAX
     imports PROCEDURES
+    imports K-EQUAL
     // imports MAP-SYMBOLIC
 
     rule ((K |->  V) _M) [ K' ] => V         requires K  ==K K' [simplification]
@@ -27,9 +28,9 @@ module SUM-SPEC
                 NID = NID - 1 ;
               }
            => . ... </k>
-          <mem> SID |-> (S:Int => S +Int ((N +Int 1) *Int N /Int 2))
+          <frame> SID |-> (S:Int => S +Int ((N +Int 1) *Int N /Int 2))
                 NID |-> (N:Int => 0)
-          </mem>
+          </frame>
       requires N >=Int 0
        andBool S >=Int 0
 
@@ -44,8 +45,8 @@ module SUM-SPEC
               return $sum(N:Int, .Ints) ;
            => return (N +Int 1) *Int N /Int 2 ;
           </k>
-          <funcs> .Map => ?_ </funcs>
-          <mem> .Map => ?_ </mem>
+          <procs> .Bag => ?_ </procs>
+          <frame> .Map => ?_ </frame>
           <stack> .List </stack>
       requires N >=Int 0
 
